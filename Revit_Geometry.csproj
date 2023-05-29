@@ -71,6 +71,8 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes.cs" />
+    <Compile Include="Commands\01_Extract_to_Class.cs" />
     <Compile Include="Commands\00_Main_Addin_Structure.cs" />
     <Compile Include="Analysis.cs" />
     <Compile Include="Commands\App.cs" />
