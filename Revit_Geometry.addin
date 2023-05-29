@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>Command Revit_Geometry</Text>
+    <Description>Some description for Revit_Geometry</Description>
+    <Assembly>C:\Users\JonPo\source\repos\TortoiseWolfe\Revit_Geometry\bin\x64\Debug\Revit_Geometry.dll</Assembly>
+    <FullClassName>Revit_Geometry.Command</FullClassName>
+    <ClientId>90ea0c6f-671f-4580-8838-bbee09ed1cf5</ClientId>
+    <VendorId>com.TrinamDesign</VendorId>
+    <VendorDescription>Drafting http://TrinamDesign.com</VendorDescription>
+  </AddIn>
+	
+  <AddIn Type="Application">
+    <Name>Application Revit_Geometry</Name>
+    <Assembly>C:\Users\JonPo\source\repos\TortoiseWolfe\Revit_Geometry\bin\x64\Debug\Revit_Geometry.dll</Assembly>
+    <FullClassName>Revit_Geometry.App</FullClassName>
+    <ClientId>b2ba8e41-8a43-4237-a4ba-1fb6fcfa02ba</ClientId>
+    <VendorId>com.TrinamDesign</VendorId>
+    <VendorDescription>Drafting http://TrinamDesign.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>
