@@ -35,6 +35,19 @@ namespace Revit_Geometry
                 LocationCurve Loc = elem.Location as LocationCurve;
                 E_Element1.line = Rvt_Geometry.curveToLine(Loc.Curve);
             }
+            Options g_opt = new Options();
+            GeometryElement geomElem = elem.get_Geometry(g_opt);
+            foreach (object geomObj in geomElem)
+            {
+                if (geomObj.GetType().ToString() == "Autodesk.Revit.DB.GeometryInstance")
+                {
+
+                }
+                if (geomObj.GetType().ToString() == "Autodesk.Revit.DB.Solid")
+                {
+
+                }
+            }
             return E_Element1;
             }
         public List<E_element> Get_e_Elements_from_Elements(List<Element> SelectedElements)
