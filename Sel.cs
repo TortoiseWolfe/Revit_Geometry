@@ -150,7 +150,7 @@ namespace Revit_Geometry
             {
                 //if (elem.Category.Name == "Structural Columns")
                 //{
-                    return true;
+                return true;
                 //}
                 //return false;
             }

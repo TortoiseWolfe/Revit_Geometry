@@ -1,4 +1,5 @@
-﻿using System;
+﻿#region Namespaces
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ using Autodesk.Revit.UI.Selection;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB.Structure;
 using System.Windows.Forms;
+#endregion
 
 namespace Revit_Geometry
 {
@@ -19,26 +21,22 @@ namespace Revit_Geometry
         public E_element Get_e_Element_from_Element(Element elem) 
             {
             E_element E_Element1 = new E_element();
-            E_Element1.Element = elem;
+            E_Element1.element = elem;
             FamilySymbol familySymbol = doc.GetElement(elem.GetTypeId()) as FamilySymbol;    
-            E_Element1.FamilySymbol = familySymbol;
-            E_Element1.Level = doc.GetElement(elem.LevelId) as Level;
-            if(elem.Category.Name == "Structural Columns")
+            E_Element1.symbol = familySymbol;
+            E_Element1.level = doc.GetElement(elem.LevelId) as Level;
+            if(elem.Category.Name == "Structural Columns"|| elem.Category.Name == "Structural Foundations")
             {
                 LocationPoint Loc = elem.Location as LocationPoint;
-                E_Element1.BottomPoint = Loc.Point;
+                E_Element1.bPoint = Loc.Point;
             }
-            
-            
-                return E_Element1;
+            if(elem.Category.Name == "Structural Framing")
+            {
+                LocationCurve Loc = elem.Location as LocationCurve;
+                E_Element1.line = Rvt_Geometry.curveToLine(Loc.Curve);
             }
-
-
-
-
-
-
-
+            return E_Element1;
+            }
         public List<E_element> Get_e_Elements_from_Elements(List<Element> SelectedElements)
             {
             List<E_element> All_E_Elements = new List<E_element>();
@@ -47,7 +45,6 @@ namespace Revit_Geometry
                 E_element E_Element1 = Get_e_Element_from_Element(elemenT);
                 All_E_Elements.Add(E_Element1);
             }
-
             return All_E_Elements;
             }
     }

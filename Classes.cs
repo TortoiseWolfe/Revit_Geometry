@@ -13,11 +13,15 @@ namespace Revit_Geometry
 {
     internal class E_element
     {
-        public Element Element { get; set; }
-        public XYZ BottomPoint { get; set; }
-        public XYZ TopPoint { get; set; }
-        public Line Line { get; set; }
-        public FamilySymbol FamilySymbol { get; set; }
-        public Level Level { get; set; }
+        public Element element { get; set; }
+        public XYZ bPoint { get; set; }
+        public XYZ tPoint { get; set; }
+        public Line line { get; set; }
+        public Solid solid { get; set; }
+        public List<Face> faces { get; set; }
+        public FamilySymbol symbol { get; set; }
+        public Level level { get; set; }
+        public XYZ centroid { get; set; }
+        public double horizontalAngle { get; set; }
     }
 }

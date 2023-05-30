@@ -35,8 +35,11 @@ namespace Revit_Geometry
             XYZ plane_Origin = plane_One.Origin;
             XYZ plane_Normal = plane_One.Normal;
         }
-
-        public static XYZ PointIntersection_LinePlane(Line line, Plane plane, out double lineParameter)
+        public Line curveToLine(Curve cu)
+        {
+            return Line.CreateBound(cu.GetEndPoint(0), cu.GetEndPoint(1));
+        }
+        public XYZ PointIntersection_LinePlane(Line line, Plane plane, out double lineParameter)
         {
             XYZ plane_Point = plane.Origin;
             XYZ plane_Normal = plane.Normal;
@@ -50,7 +53,7 @@ namespace Revit_Geometry
             lineParameter = (plane_Normal.DotProduct(plane_Point - line_StartPoint)) / plane_Normal.DotProduct(line_Direction);
             return line_StartPoint + lineParameter * line_Direction;
         }
-        public static bool IsZero(double a, double tolerance = _eps)
+        public bool IsZero(double a, double tolerance = _eps)
         {
             return tolerance > Math.Abs(a);
         }
