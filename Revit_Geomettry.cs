@@ -17,15 +17,22 @@ namespace Revit_Geometry
     {
         public void geometryFunction()
         {
-            XYZ p1 = new XYZ(0, 4, 5);
+            XYZ point_1 = new XYZ(0, 4, 5);
             XYZ vector = new XYZ(0, 0, 1);
-            XYZ unifiedVector = p1.Normalize();
-            //XYZ reversVector = -p1;
-            XYZ reversVector = p1.Negate();
+            XYZ unifiedVector = point_1.Normalize();
+            //XYZ reversVector = -point_1;
+            XYZ reversVector = point_1.Negate();
             //XYZ modifiedVector = unifiedVector * 2;
             XYZ modifiedVector = unifiedVector.Multiply(3);
-            XYZ addition = p1.Add(modifiedVector);
-            Line line_One = Line.CreateBound(p1, addition);
+            XYZ addition = point_1.Add(modifiedVector);
+            Line line_One = Line.CreateBound(point_1, addition);
+            XYZ direction = line_One.Direction;
+            double length = line_One.Length;
+            XYZ startPoint = line_One.GetEndPoint(0);
+            XYZ endPoint = line_One.GetEndPoint(1);
+            Plane plane_One = Plane.CreateByNormalAndOrigin(vector, point_1);
+            XYZ plane_Origin = plane_One.Origin;
+            XYZ plane_Normal = plane_One.Normal;
         }
     }
 
