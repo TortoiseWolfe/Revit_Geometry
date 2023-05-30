@@ -29,6 +29,7 @@ namespace Revit_Geometry
             List<Element> SelectedElements = Sel.MultipleStructuralColumnElementSelection(uiapp);
             List<E_element> All_E_Elements = Extraction.Get_e_Elements_from_Elements(SelectedElements);
 
+
             // Analysis
             //MessageBox.Show(
             //    "Selected Element: " + 
