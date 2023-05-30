@@ -148,11 +148,11 @@ namespace Revit_Geometry
         {
             public bool AllowElement(Element elem)
             {
-                if (elem.Category.Name == "Structural Columns")
-                {
+                //if (elem.Category.Name == "Structural Columns")
+                //{
                     return true;
-                }
-                return false;
+                //}
+                //return false;
             }
 
             public bool AllowReference(Reference reference, XYZ position)

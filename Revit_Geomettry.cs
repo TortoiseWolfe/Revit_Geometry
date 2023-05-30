@@ -13,7 +13,7 @@ using Autodesk.Revit.DB;
 
 namespace Revit_Geometry
 {
-    internal class Revit_Geomettry
+    internal class RevitGeometry
     {
         public const double _eps = 1.0e-9;
         public void Geometry_Function()
