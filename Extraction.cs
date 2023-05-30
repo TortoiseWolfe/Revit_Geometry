@@ -37,15 +37,37 @@ namespace Revit_Geometry
             }
             Options g_opt = new Options();
             GeometryElement geomElem = elem.get_Geometry(g_opt);
+            List<Face> AllFaces = new List<Face>();
             foreach (object geomObj in geomElem)
             {
                 if (geomObj.GetType().ToString() == "Autodesk.Revit.DB.GeometryInstance")
                 {
-
+                    GeometryInstance geo_Inst = geomObj as GeometryInstance;
+                    foreach (GeometryObject geo_Obj in geo_Inst.GetInstanceGeometry())
+                    {
+                        if(geo_Obj is Solid)
+                        {
+                            Solid solid = geo_Obj as Solid;
+                            E_Element1.solid = solid;
+                            FaceArray faces = solid.Faces;
+                            foreach (Face face in faces)
+                            {
+                                AllFaces.Add(face);
+                            }
+                            E_Element1.faces = AllFaces;
+                        }
+                    }
                 }
                 if (geomObj.GetType().ToString() == "Autodesk.Revit.DB.Solid")
                 {
-
+                    Solid solid = geomObj as Solid;
+                    E_Element1.solid = solid;
+                    FaceArray faces = solid.Faces;
+                    foreach (Face face in faces)
+                    {
+                        AllFaces.Add(face);
+                    }
+                    E_Element1.faces = AllFaces;
                 }
             }
             return E_Element1;
