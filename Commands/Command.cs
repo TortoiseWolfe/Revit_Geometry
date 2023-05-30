@@ -29,7 +29,7 @@ namespace Revit_Geometry
 
             // Access current selection
 
-            Selection sel = uidoc.Selection;
+            Autodesk.Revit.UI.Selection.Selection sel = uidoc.Selection;
 
             // Retrieve elements from database
 

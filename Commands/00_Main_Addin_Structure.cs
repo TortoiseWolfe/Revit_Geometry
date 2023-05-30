@@ -27,9 +27,9 @@ namespace Revit_Geometry
             //List<Element> SelectedElements = Extraction.multipleStructuralColumnElementSelection(uiapp);
             //List<FamilyInstance> allColumns = Extraction.getAllFamilyInsancesOfCategory(doc, BuiltInCategory.OST_StructuralColumns);
 //          List<FamilySymbol> allColumnsfamilySymbols = Extraction.getAllFamilySymbolsOfCategory(doc, BuiltInCategory.OST_StructuralColumns);
-            List<FamilySymbol> allColumnsfamilySymbols = Extraction.GetAllFamilySymbolsOfCategoryFamilyName(doc, BuiltInCategory.OST_StructuralColumns, "Concrete-Rectangular-Column");
+            List<FamilySymbol> allColumnsfamilySymbols = Sel.GetAllFamilySymbolsOfCategoryFamilyName(doc, BuiltInCategory.OST_StructuralColumns, "Concrete-Rectangular-Column");
             //List<ElementType> allColumnsElementTypes = Extraction.getAllElementTpyesOfCategory(doc, BuiltInCategory.OST_StructuralColumns);
-            List<Level> allLevels = Extraction.Levels(doc);
+            List<Level> allLevels = Sel.Levels(doc);
             //Element - > FamilyInstance
             //ElementType - > FamilyType - > FamilySymbol
 

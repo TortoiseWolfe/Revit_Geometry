@@ -21,7 +21,7 @@ namespace Revit_Geometry
             // Selection or Extraction
             UIApplication uiapp = commandData.Application;
             Document doc = uiapp.ActiveUIDocument.Document;
-            Element SelectedElement = Extraction.SingleCurtainWallSelection(uiapp);
+            Element SelectedElement = Sel.SingleCurtainWallSelection(uiapp);
 
             // Add the selected element to a list
             List<Element> SelectedElements = new List<Element>();

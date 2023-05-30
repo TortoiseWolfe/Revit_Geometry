@@ -22,21 +22,12 @@ namespace Revit_Geometry
             ElementSet elements)
         {
             // Selection
+            Extraction Extraction = new Extraction();
             UIApplication uiapp = commandData.Application;
             Document doc = uiapp.ActiveUIDocument.Document;
-
-            List<Element> SelectedElements = Extraction.MultipleStructuralColumnElementSelection(uiapp);
-            List<E_element> All_E_Elements = new List<E_element>();
-
-            foreach (Element SelectedElement in SelectedElements)
-            {
-                E_element E_Element1 = new E_element();
-                E_Element1.Element = SelectedElement;
-                FamilySymbol familySymbol = doc.GetElement(SelectedElement.GetTypeId()) as FamilySymbol;    
-                E_Element1.FamilySymbol = familySymbol;
-                E_Element1.Level = doc.GetElement(SelectedElement.LevelId) as Level;
-                All_E_Elements.Add(E_Element1);
-            }
+            Extraction.doc = doc;
+            List<Element> SelectedElements = Sel.MultipleStructuralColumnElementSelection(uiapp);
+            List<E_element> All_E_Elements = Extraction.Get_e_Elements_from_Elements(SelectedElements);
 
             // Analysis
             //MessageBox.Show(
