@@ -57,6 +57,38 @@ namespace Revit_Geometry
         {
             return tolerance > Math.Abs(a);
         }
+        public Plane planeFromFace(Face f)
+        {
+            PlanarFace PF = f as PlanarFace;
+            Plane PL = PF.GetSurface() as Plane;
+            return PL;
+        }
+
+        public XYZ centerPointOfPlane(Plane PL)
+        {
+            return PL.Origin;
+        }
+        //public double signedDistanceTo(Plane plane, XYZ p)
+        //{
+        //    XYZ v = p - plane.Origin;
+        //    return plane.Normal.DotProduct(v);
+        //}
+        //public XYZ projectOnto(Plane plane, XYZ p)
+        //{
+        //    double d = signedDistanceTo(plane, p);
+        //    XYZ q = p - d * plane.Normal;
+        //    return q;
+        //}
+        //public XYZ midPointOfLine(Line line)
+        //{
+        //    XYZ StartPoint = line.GetEndPoint(0);
+        //    XYZ midPoint = StartPoint.Add(line.Direction.Normalize().Multiply(line.Length / 2));
+        //    return midPoint;
+        //}
+        //public Line verticalLineFromPoint(XYZ point)
+        //{
+        //    return Line.CreateBound(point, point.Add(new XYZ(0, 0, 1)));
+        //}
     }
 
     public class CoordinateSystem

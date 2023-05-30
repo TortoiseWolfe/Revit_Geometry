@@ -24,4 +24,11 @@ namespace Revit_Geometry
         public XYZ centroid { get; set; }
         public double horizontalAngle { get; set; }
     }
+
+    public class reviewFamily
+    {
+        public XYZ point { get; set; }
+        public double horizontalAngle { get; set; }
+        public FamilySymbol symbol { get; set; }
+    }
 }

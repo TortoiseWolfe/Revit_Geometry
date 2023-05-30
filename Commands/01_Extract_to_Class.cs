@@ -23,13 +23,22 @@ namespace Revit_Geometry
         {
             // Selection
             Extraction Extraction = new Extraction();
+            RevitGeometry revitGeometry = new RevitGeometry();
             UIApplication uiapp = commandData.Application;
             Document doc = uiapp.ActiveUIDocument.Document;
             Extraction.doc = doc;
             List<Element> SelectedElements = Sel.MultipleStructuralColumnElementSelection(uiapp);
             List<E_element> All_E_Elements = Extraction.Get_e_Elements_from_Elements(SelectedElements);
 
-
+            List<reviewFamily>RF = new List<reviewFamily>();
+            foreach (E_element eEl in All_E_Elements)
+            {
+                foreach(Face f in eEl)
+                {
+                    reviewFamily rf = new reviewFamily();
+                    rf.point = revitGeometry.centerPointOfPlane(revitGeometry.planeFromFace(f));
+                }
+            }
             // Analysis
             //MessageBox.Show(
             //    "Selected Element: " + 
