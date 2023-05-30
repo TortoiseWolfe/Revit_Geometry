@@ -15,7 +15,8 @@ namespace Revit_Geometry
 {
     internal class Revit_Geomettry
     {
-        public void geometryFunction()
+        public const double _eps = 1.0e-9;
+        public void Geometry_Function()
         {
             XYZ point_1 = new XYZ(0, 4, 5);
             XYZ vector = new XYZ(0, 0, 1);
@@ -33,6 +34,25 @@ namespace Revit_Geometry
             Plane plane_One = Plane.CreateByNormalAndOrigin(vector, point_1);
             XYZ plane_Origin = plane_One.Origin;
             XYZ plane_Normal = plane_One.Normal;
+        }
+
+        public static XYZ PointIntersection_LinePlane(Line line, Plane plane, out double lineParameter)
+        {
+            XYZ plane_Point = plane.Origin;
+            XYZ plane_Normal = plane.Normal;
+            XYZ line_StartPoint = line.GetEndPoint(0);
+            XYZ line_Direction = (line.GetEndPoint(1) - line_StartPoint).Normalize();
+            if (IsZero(plane_Normal.DotProduct(line_Direction),_eps))
+            {
+                lineParameter = double.NaN;
+                return null;
+            }
+            lineParameter = (plane_Normal.DotProduct(plane_Point - line_StartPoint)) / plane_Normal.DotProduct(line_Direction);
+            return line_StartPoint + lineParameter * line_Direction;
+        }
+        public static bool IsZero(double a, double tolerance = _eps)
+        {
+            return tolerance > Math.Abs(a);
         }
     }
 
