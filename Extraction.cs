@@ -22,7 +22,8 @@ namespace Revit_Geometry
             {
             E_element E_Element1 = new E_element();
             E_Element1.element = elem;
-            FamilySymbol familySymbol = doc.GetElement(elem.GetTypeId()) as FamilySymbol;    
+            FamilySymbol familySymbol = doc.GetElement(elem.GetTypeId()) as FamilySymbol;
+            FamilyInstance e_familyInstance = elem as FamilyInstance;
             E_Element1.symbol = familySymbol;
             E_Element1.level = doc.GetElement(elem.LevelId) as Level;
             if(elem.Category.Name == "Structural Columns"|| elem.Category.Name == "Structural Foundations")
@@ -34,7 +35,7 @@ namespace Revit_Geometry
             {
                 LocationCurve Loc = elem.Location as LocationCurve;
                 E_Element1.line = Rvt_Geometry.curveToLine(Loc.Curve);
-                E_Element1.bPoint = E_Element1.line.GetEndPoint(0);
+                E_Element1.bPoint = Rvt_Geometry.midPointOfLine(E_Element1.line);
             }
             Options g_opt = new Options();
             GeometryElement geomElem = elem.get_Geometry(g_opt);
@@ -51,13 +52,27 @@ namespace Revit_Geometry
                             try
                             {
                                 Solid solid = geo_Obj as Solid;
-                                Transform transform = Transform.CreateTranslation(E_Element1.bPoint);
-                                Solid newSolid = SolidUtils.CreateTransformed(solid, transform);
-                                XYZ centroid = newSolid.ComputeCentroid();  
+
+                                //Transform transform1 = Transform.CreateTranslation(E_Element1.bPoint);
+                                double ang = new XYZ(0, 1, 0).AngleTo(e_familyInstance.FacingOrientation);
+                                if (e_familyInstance.FacingOrientation.X > 0)
+                                {
+                                    ang = ang * -1;
+                                }
+                                E_Element1.horizontalAngle = ang;
+                                //Transform transform2 = Transform.CreateRotationAtPoint(new XYZ(0, 0, 1), ang, E_Element1.bPoint);
+                                ///*Transform t2 = Transform.CreateRotationAtPoint(new XYZ(0, 0, 1),ang ,elem1.bPoint);
+                                //Solid translateSolid = SolidUtils.CreateTransformed(solid, t1);
+                                //Solid rotatedSolid = SolidUtils.CreateTransformed(translateSolid, t2);*/
+                                //Solid translateSolid = SolidUtils.CreateTransformed(solid, transform1);
+                                //Solid rotatedSolid = SolidUtils.CreateTransformed(translateSolid, transform2);
+                                Transform transform1 = e_familyInstance.GetTransform();
+                                Solid rotatedSolid = SolidUtils.CreateTransformed(solid, transform1);
+                                XYZ centroid = rotatedSolid.ComputeCentroid();  
                                 E_Element1.centroid = centroid;
 
-                                E_Element1.solid = newSolid;
-                                FaceArray faces = newSolid.Faces;
+                                E_Element1.solid = rotatedSolid;
+                                FaceArray faces = rotatedSolid.Faces;
                                 foreach (Face face in faces)
                                 {
                                 AllFaces.Add(face);

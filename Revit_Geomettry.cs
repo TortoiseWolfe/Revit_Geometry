@@ -79,23 +79,24 @@ namespace Revit_Geometry
             XYZ q = p - d * plane.Normal;
             return q;
         }
-        //public XYZ midPointOfLine(Line line)
-        //{
-        //    XYZ StartPoint = line.GetEndPoint(0);
-        //    XYZ midPoint = StartPoint.Add(line.Direction.Normalize().Multiply(line.Length / 2));
-        //    return midPoint;
-        //}
-        //public Line verticalLineFromPoint(XYZ point)
-        //{
-        //    return Line.CreateBound(point, point.Add(new XYZ(0, 0, 1)));
-        //}
+        public XYZ midPointOfLine(Line line)
+        {
+            XYZ StartPoint = line.GetEndPoint(0);
+            XYZ midPoint = StartPoint.Add(line.Direction.Normalize().Multiply(line.Length / 2));
+            return midPoint;
+        }
+        public Line verticalLineFromPoint(XYZ point)
+        {
+            //return Line.CreateBound(point, point.Add(new XYZ(point.X,point.Y,5)));
+            return Line.CreateBound(point, point.Add(new XYZ(0, 0, 1)));
+        }
     }
 
     public class CoordinateSystem
     {
         public XYZ Origin { get; set; }
-        public XYZ XAxis { get; set; }
-        public XYZ YAxis { get; set; }
-        public XYZ ZAxis { get; set; }
+        public XYZ VecX { get; set; }
+        public XYZ VecY { get; set; }
+        public XYZ VecZ { get; set; }
     }
 }

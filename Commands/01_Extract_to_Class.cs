@@ -38,6 +38,7 @@ namespace Revit_Geometry
                     reviewFamily rf = new reviewFamily();
                     rf.point = revitGeometry.centerPointOfPlane(revitGeometry.planeFromFace(f), eEl.centroid);
                     rf.symbol = Symbol;
+                    rf.horizontalAngle = eEl.horizontalAngle;
                     RF.Add(rf);
 
                 }
@@ -62,6 +63,7 @@ namespace Revit_Geometry
                     rf.point,
                     rf.symbol,
                     StructuralType.NonStructural);
+                ElementTransformUtils.RotateElement(doc, newColumn.Id, revitGeometry.verticalLineFromPoint(rf.point), rf.horizontalAngle);
             }
             tx.Commit();
             return Result.Succeeded;
