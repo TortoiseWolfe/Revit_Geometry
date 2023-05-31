@@ -209,6 +209,25 @@ namespace Revit_Geometry
             }
             return allFamSymbols;
         }
+        public static FamilySymbol GetFamilySymbolOfCategoryFamilyName(Document doc, BuiltInCategory category, string familyName)
+        {
+            FamilySymbol symbol = null;
+            FilteredElementCollector collector = new FilteredElementCollector(doc).OfCategory(category).OfClass(typeof(FamilySymbol));
+            FilteredElementIdIterator famIterator = collector.GetElementIdIterator();
+            famIterator.Reset();
+            while (famIterator.MoveNext())
+            {
+                ElementId famItId = famIterator.Current;
+                FamilySymbol famSymbol = doc.GetElement(famItId) as FamilySymbol;
+                if (famSymbol.FamilyName == familyName)
+                {
+                    symbol = famSymbol;
+                    break;
+                }
+            }
+            return symbol;
+        }
+
         public static List<ElementType> GetAllElementTpyesOfCategory(Document doc, BuiltInCategory category)
         {
             List<ElementType> allElementTypes = new List<ElementType>();

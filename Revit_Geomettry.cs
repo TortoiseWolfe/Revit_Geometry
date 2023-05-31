@@ -64,21 +64,21 @@ namespace Revit_Geometry
             return PL;
         }
 
-        public XYZ centerPointOfPlane(Plane PL)
+        public XYZ centerPointOfPlane(Plane PL, XYZ centroid)
         {
-            return PL.Origin;
+            return projectOnto(PL, centroid);
         }
-        //public double signedDistanceTo(Plane plane, XYZ p)
-        //{
-        //    XYZ v = p - plane.Origin;
-        //    return plane.Normal.DotProduct(v);
-        //}
-        //public XYZ projectOnto(Plane plane, XYZ p)
-        //{
-        //    double d = signedDistanceTo(plane, p);
-        //    XYZ q = p - d * plane.Normal;
-        //    return q;
-        //}
+        public double signedDistanceTo(Plane plane, XYZ p)
+        {
+            XYZ v = p - plane.Origin;
+            return plane.Normal.DotProduct(v);
+        }
+        public XYZ projectOnto(Plane plane, XYZ p)
+        {
+            double d = signedDistanceTo(plane, p);
+            XYZ q = p - d * plane.Normal;
+            return q;
+        }
         //public XYZ midPointOfLine(Line line)
         //{
         //    XYZ StartPoint = line.GetEndPoint(0);

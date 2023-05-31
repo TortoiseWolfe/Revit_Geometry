@@ -29,60 +29,42 @@ namespace Revit_Geometry
             Extraction.doc = doc;
             List<Element> SelectedElements = Sel.MultipleStructuralColumnElementSelection(uiapp);
             List<E_element> All_E_Elements = Extraction.Get_e_Elements_from_Elements(SelectedElements);
-
+            FamilySymbol Symbol = Sel.GetFamilySymbolOfCategoryFamilyName(doc, BuiltInCategory.OST_GenericModel,"Family1");
             List<reviewFamily>RF = new List<reviewFamily>();
             foreach (E_element eEl in All_E_Elements)
             {
-                foreach(Face f in eEl)
+                foreach(Face f in eEl.faces)
                 {
                     reviewFamily rf = new reviewFamily();
-                    rf.point = revitGeometry.centerPointOfPlane(revitGeometry.planeFromFace(f));
+                    rf.point = revitGeometry.centerPointOfPlane(revitGeometry.planeFromFace(f), eEl.centroid);
+                    rf.symbol = Symbol;
+                    RF.Add(rf);
+
                 }
             }
             // Analysis
-            //MessageBox.Show(
-            //    "Selected Element: " + 
-            //    SelectedElement.Category.Name + 
-            //    ":|:" + 
-            //    SelectedElement.Id.ToString());
-            //          Analysis.ShowElementsData(SelectedElements);
-            //          Analysis.ShowFamilyInstanceData(allColumns);
-  //          Analysis.ShowFamilySymbolsData(allColumnsfamilySymbols);
-  //          Analysis.ShowElementTypesData(allColumnsElementTypes);
 
             // Creation
-            // Transaction
-            //Transaction tx = new Transaction(doc);
-            //tx.Start("Transaction Name");
-            //if (!allColumnsfamilySymbols[0].IsActive)
-            //{
-            //    allColumnsfamilySymbols[0].Activate();
-            //}
-            ////FamilyInstance newColumn = doc.Create.NewFamilyInstance(
-            ////                   new XYZ(0, 0, 0),
-            ////                   allColumnsfamilySymbols[0],
-            ////                   StructuralType.NonStructural);
+            //Transaction
+           Transaction tx = new Transaction(doc);
+            tx.Start("Transaction Name");
+            if (!Symbol.IsActive)
+            {
+                Symbol.Activate();
+            }
             //FamilyInstance newColumn = doc.Create.NewFamilyInstance(
-            //       new XYZ(0, 0, 0),
-            //       allColumnsfamilySymbols[0],
-            //       allLevels[0],
-            //       StructuralType.NonStructural);
-
-
-            //try
-            //{
-            //    // Creation
-                
-            //    // Modification
-            //    // Return
-            //    tx.Commit();
-            //    return Result.Succeeded;
-            //}
-            //catch (Exception ex)
-            //{
+            //                   new XYZ(0, 0, 0),
+            //                   allColumnsfamilySymbols[0],
+            //                   StructuralType.NonStructural);
+            foreach(reviewFamily rf in RF)
+            {
+                FamilyInstance newColumn = doc.Create.NewFamilyInstance(
+                    rf.point,
+                    rf.symbol,
+                    StructuralType.NonStructural);
+            }
+            tx.Commit();
             return Result.Succeeded;
-
-            //}
         }
     }
 }

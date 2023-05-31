@@ -34,6 +34,7 @@ namespace Revit_Geometry
             {
                 LocationCurve Loc = elem.Location as LocationCurve;
                 E_Element1.line = Rvt_Geometry.curveToLine(Loc.Curve);
+                E_Element1.bPoint = E_Element1.line.GetEndPoint(0);
             }
             Options g_opt = new Options();
             GeometryElement geomElem = elem.get_Geometry(g_opt);
@@ -47,14 +48,26 @@ namespace Revit_Geometry
                     {
                         if(geo_Obj is Solid)
                         {
-                            Solid solid = geo_Obj as Solid;
-                            E_Element1.solid = solid;
-                            FaceArray faces = solid.Faces;
-                            foreach (Face face in faces)
+                            try
                             {
+                                Solid solid = geo_Obj as Solid;
+                                Transform transform = Transform.CreateTranslation(E_Element1.bPoint);
+                                Solid newSolid = SolidUtils.CreateTransformed(solid, transform);
+                                XYZ centroid = newSolid.ComputeCentroid();  
+                                E_Element1.centroid = centroid;
+
+                                E_Element1.solid = newSolid;
+                                FaceArray faces = newSolid.Faces;
+                                foreach (Face face in faces)
+                                {
                                 AllFaces.Add(face);
+                                }
+                                E_Element1.faces = AllFaces;
                             }
-                            E_Element1.faces = AllFaces;
+                            catch
+                            {
+                                MessageBox.Show("Error");
+                            }
                         }
                     }
                 }
