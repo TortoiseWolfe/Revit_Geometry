@@ -26,7 +26,7 @@ namespace Revit_VizForms
             FamilyInstance e_familyInstance = elem as FamilyInstance;
             E_Element1.symbol = familySymbol;
             E_Element1.level = doc.GetElement(elem.LevelId) as Level;
-            if(elem.Category.Name == "Structural Columns"|| elem.Category.Name == "Structural Foundations")
+            if(elem.Category.Name == "Structural Columns"|| elem.Category.Name == "Structural Foundations"|| elem.Category.Name == "Generic Models")
             {
                 LocationPoint Loc = elem.Location as LocationPoint;
                 E_Element1.bPoint = Loc.Point;
