@@ -10,7 +10,7 @@ using System.Diagnostics;
 
 #endregion
 
-namespace Revit_Geometry
+namespace Revit_VizForms
 {
     [Transaction(TransactionMode.Manual)]
     [Regeneration(RegenerationOption.Manual)]

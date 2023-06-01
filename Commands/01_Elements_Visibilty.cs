@@ -14,7 +14,7 @@ namespace Revit_VizForms
 {
     [Transaction(TransactionMode.Manual)]
     [Regeneration(RegenerationOption.Manual)]
-    internal class _00_Main_Addin_Structure:IExternalCommand
+    internal class _01_Elements_Visibilty:IExternalCommand
     {
         public Result Execute(
             ExternalCommandData commandData,
@@ -24,7 +24,7 @@ namespace Revit_VizForms
             // Selection
             UIApplication uiapp = commandData.Application;
             Document doc = uiapp.ActiveUIDocument.Document;
-
+            List<FamilyInstance> genericModels = Sel.GetAllFamilyInsancesOfCategory(doc, BuiltInCategory.OST_GenericModel);
             // Analysis
 
             // Creation
@@ -32,6 +32,7 @@ namespace Revit_VizForms
             // Transaction
             Transaction tx = new Transaction(doc);
             tx.Start("Transaction Trinam VizForms");
+
             tx.Commit();
             return Result.Succeeded;
         }

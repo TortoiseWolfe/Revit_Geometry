@@ -9,7 +9,7 @@ using Autodesk.Revit.UI;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB.Structure;
 
-namespace Revit_Geometry
+namespace Revit_VizForms
 {
     internal class E_element
     {

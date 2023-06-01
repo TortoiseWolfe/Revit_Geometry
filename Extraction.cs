@@ -12,7 +12,7 @@ using Autodesk.Revit.DB.Structure;
 using System.Windows.Forms;
 #endregion
 
-namespace Revit_Geometry
+namespace Revit_VizForms
 {
     internal class Extraction
     {

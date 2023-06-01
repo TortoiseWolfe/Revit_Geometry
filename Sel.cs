@@ -10,7 +10,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 #endregion
 
-namespace Revit_Geometry
+namespace Revit_VizForms
 {
     internal class Sel
     {

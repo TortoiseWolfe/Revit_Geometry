@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using Autodesk.Revit.DB;
 #endregion
 
-namespace Revit_Geometry
+namespace Revit_VizForms
 {
     internal class Analysis
     {

@@ -10,7 +10,7 @@ using System.Windows.Media.Imaging;
 using System.IO;
 #endregion
 
-namespace Revit_Geometry
+namespace Revit_VizForms
 {
     [Transaction(TransactionMode.Manual)]
     [Regeneration(RegenerationOption.Manual)]
@@ -19,11 +19,11 @@ namespace Revit_Geometry
         void AddRibbonPanel(UIControlledApplication aPP)
         {
             // Create a custom ribbon tab
-            String tabName = "Geometry";
+            String tabName = "VizForms";
             aPP.CreateRibbonTab(tabName);
 
             // Add a new ribbon panel
-            RibbonPanel ribbonPanel = aPP.CreateRibbonPanel(tabName, "Geometry");
+            RibbonPanel ribbonPanel = aPP.CreateRibbonPanel(tabName, "VizForms");
             RibbonPanel ribbonPanel_02 = aPP.CreateRibbonPanel(tabName, "Dimensioning");
 
             // Get dll assembly path
@@ -71,9 +71,9 @@ namespace Revit_Geometry
 
             PushButton pb1 = ribbonPanel.AddItem(A1) as PushButton;
             pb1.ToolTip = toolTipText;
-            pb1.ToolTipImage = PngImageSource("Revit_Geometry.Resources.toolTipImages." + toolTipImageFileName);
+            pb1.ToolTipImage = PngImageSource("Revit_VizForms.Resources.toolTipImages." + toolTipImageFileName);
             pb1.LongDescription = lngDescription;
-            pb1.LargeImage = PngImageSource("Revit_Geometry.Resources." + largeImageFileName);
+            pb1.LargeImage = PngImageSource("Revit_VizForms.Resources." + largeImageFileName);
 //          pb1.Enabled = true;
 
         }

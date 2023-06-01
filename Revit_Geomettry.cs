@@ -11,30 +11,11 @@ using Autodesk.Revit.DB;
 //using Autodesk.Revit.DB;
 //using System.Windows.Forms;
 
-namespace Revit_Geometry
+namespace Revit_VizForms
 {
     internal class RevitGeometry
     {
         public const double _eps = 1.0e-9;
-        //public void Geometry_Function()
-        //{
-        //    XYZ point_1 = new XYZ(0, 4, 5);
-        //    XYZ vector = new XYZ(0, 0, 1);
-        //    XYZ unifiedVector = point_1.Normalize();
-        //    //XYZ reversVector = -point_1;
-        //    XYZ reversVector = point_1.Negate();
-        //    //XYZ modifiedVector = unifiedVector * 2;
-        //    XYZ modifiedVector = unifiedVector.Multiply(3);
-        //    XYZ addition = point_1.Add(modifiedVector);
-        //    Line line_One = Line.CreateBound(point_1, addition);
-        //    XYZ direction = line_One.Direction;
-        //    double length = line_One.Length;
-        //    XYZ startPoint = line_One.GetEndPoint(0);
-        //    XYZ endPoint = line_One.GetEndPoint(1);
-        //    Plane plane_One = Plane.CreateByNormalAndOrigin(vector, point_1);
-        //    XYZ plane_Origin = plane_One.Origin;
-        //    XYZ plane_Normal = plane_One.Normal;
-        //}
         public Line curveToLine(Curve cu)
         {
             return Line.CreateBound(cu.GetEndPoint(0), cu.GetEndPoint(1));
@@ -63,7 +44,6 @@ namespace Revit_Geometry
             Plane PL = PF.GetSurface() as Plane;
             return PL;
         }
-
         public XYZ centerPointOfPlane(Plane PL, XYZ centroid)
         {
             return projectOnto(PL, centroid);
@@ -91,7 +71,6 @@ namespace Revit_Geometry
             return Line.CreateBound(point, point.Add(new XYZ(0, 0, 1)));
         }
     }
-
     public class CoordinateSystem
     {
         public XYZ Origin { get; set; }
