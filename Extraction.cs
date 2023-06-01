@@ -68,11 +68,13 @@ namespace Revit_Geometry
                                 //Solid rotatedSolid = SolidUtils.CreateTransformed(translateSolid, transform2);
                                 Transform transform1 = e_familyInstance.GetTransform();
                                 Solid rotatedSolid = SolidUtils.CreateTransformed(solid, transform1);
-                                XYZ centroid = rotatedSolid.ComputeCentroid();  
+                                //XYZ centroid = rotatedSolid.ComputeCentroid();  
+                                XYZ centroid = solid.ComputeCentroid();
+
                                 E_Element1.centroid = centroid;
 
-                                E_Element1.solid = rotatedSolid;
-                                FaceArray faces = rotatedSolid.Faces;
+                                E_Element1.solid = solid;
+                                FaceArray faces = solid.Faces;
                                 foreach (Face face in faces)
                                 {
                                 AllFaces.Add(face);
