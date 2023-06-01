@@ -24,70 +24,16 @@ namespace Revit_Geometry
             // Selection
             UIApplication uiapp = commandData.Application;
             Document doc = uiapp.ActiveUIDocument.Document;
-            //List<Element> SelectedElements = Extraction.multipleStructuralColumnElementSelection(uiapp);
-            //List<FamilyInstance> allColumns = Extraction.getAllFamilyInsancesOfCategory(doc, BuiltInCategory.OST_StructuralColumns);
-//          List<FamilySymbol> allColumnsfamilySymbols = Extraction.getAllFamilySymbolsOfCategory(doc, BuiltInCategory.OST_StructuralColumns);
-            List<FamilySymbol> allColumnsfamilySymbols = Sel.GetAllFamilySymbolsOfCategoryFamilyName(doc, BuiltInCategory.OST_StructuralColumns, "Concrete-Rectangular-Column");
-            //List<ElementType> allColumnsElementTypes = Extraction.getAllElementTpyesOfCategory(doc, BuiltInCategory.OST_StructuralColumns);
-            List<Level> allLevels = Sel.Levels(doc);
-            //Element - > FamilyInstance
-            //ElementType - > FamilyType - > FamilySymbol
-
-            //List<FamilySymbol> allColumnsfamilySymbols = Extraction.GetAllFamilySymbolsOfCategoryFamilyName(doc,BuiltInCategory.OST_StructuralColumns,"Concrete-Rectangular-Column");
-            //foreach (FamilySymbol item in allColumnsfamilySymbols)
-            //{
-            //    if(item.FamilyName == famSymb.FamilyName)
-            //    {
-            //        famSymb= item;
-            //    }
-            //}
-
 
             // Analysis
-            //MessageBox.Show(
-            //    "Selected Element: " + 
-            //    SelectedElement.Category.Name + 
-            //    ":|:" + 
-            //    SelectedElement.Id.ToString());
-            //          Analysis.ShowElementsData(SelectedElements);
-            //          Analysis.ShowFamilyInstanceData(allColumns);
-            Analysis.ShowFamilySymbolsData(allColumnsfamilySymbols);
-  //          Analysis.ShowElementTypesData(allColumnsElementTypes);
 
             // Creation
+            
             // Transaction
             Transaction tx = new Transaction(doc);
-            tx.Start("Transaction Name");
-            if (!allColumnsfamilySymbols[0].IsActive)
-            {
-                allColumnsfamilySymbols[0].Activate();
-            }
-            //FamilyInstance newColumn = doc.Create.NewFamilyInstance(
-            //                   new XYZ(0, 0, 0),
-            //                   allColumnsfamilySymbols[0],
-            //                   StructuralType.NonStructural);
-            FamilyInstance newColumn = doc.Create.NewFamilyInstance(
-                   new XYZ(0, 0, 0),
-                   allColumnsfamilySymbols[0],
-                   allLevels[0],
-                   StructuralType.NonStructural);
-
-
-            try
-            {
-                // Creation
-                
-                // Modification
-                // Return
-                tx.Commit();
-                return Result.Succeeded;
-            }
-            catch (Exception ex)
-            {
-                return Result.Succeeded;
-
-            }
+            tx.Start("Transaction Trinam VizForms");
+            tx.Commit();
+            return Result.Succeeded;
         }
     }
 }
-
