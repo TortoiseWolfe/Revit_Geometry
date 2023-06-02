@@ -68,10 +68,12 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes.cs" />
+    <Compile Include="Commands\03_Select_Elements_OverRide.cs" />
     <Compile Include="Commands\02_Elements_Reset_OverRide.cs" />
     <Compile Include="Commands\01_Elements_OverRide.cs" />
     <Compile Include="Commands\00_Main_Addin_Structure.cs" />
@@ -82,6 +84,7 @@
     <Compile Include="Commands\_10_CurtainWallSelection.cs" />
     <Compile Include="Commands\_11_CurtainWallDimensioning.cs" />
     <Compile Include="Extraction.cs" />
+    <Compile Include="Forms.cs" />
     <Compile Include="Graphical.cs" />
     <Compile Include="Revit_Geomettry.cs" />
     <Compile Include="Sel.cs" />
