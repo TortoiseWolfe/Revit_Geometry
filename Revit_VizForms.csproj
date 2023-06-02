@@ -81,6 +81,7 @@
     <Compile Include="Commands\_10_CurtainWallSelection.cs" />
     <Compile Include="Commands\_11_CurtainWallDimensioning.cs" />
     <Compile Include="Extraction.cs" />
+    <Compile Include="Graphical.cs" />
     <Compile Include="Revit_Geomettry.cs" />
     <Compile Include="Sel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

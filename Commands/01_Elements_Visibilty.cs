@@ -40,6 +40,7 @@ namespace Revit_VizForms
                 heights.Add(Math.Round(e.bPoint.Z,0));
             }
             List<double> uniqueHeights = heights.Distinct().ToList();
+            List<Color> ColorSet = Graphical.create_List_of_Colors_by_Number(uniqueHeights.Count);
             // Analysis
 
             // Creation
