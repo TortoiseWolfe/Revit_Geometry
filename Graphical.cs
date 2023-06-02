@@ -34,6 +34,32 @@ namespace Revit_VizForms
             }
             return allColors;
         }
-        
+        public static OverrideGraphicSettings create_OverRide_ByColor_and_PatternName(Document doc, Color color, string patternName)
+        {
+            OverrideGraphicSettings ogs = new OverrideGraphicSettings();
+            Element pattern = get_Pattern_ByName(doc, patternName);
+            ogs.SetSurfaceBackgroundPatternColor(color);
+            ogs.SetSurfaceForegroundPatternColor(color);
+            ogs.SetProjectionLineColor(color);
+            ogs.SetCutLineColor(color);
+            ogs.SetSurfaceForegroundPatternId(pattern.Id);
+            ogs.SetSurfaceBackgroundPatternId(pattern.Id);
+            return ogs;
+        }
+        public static Element get_Pattern_ByName(Document doc, string patternName)
+        {
+            Element extracted = null;
+            Element[] Collector = new FilteredElementCollector(doc).OfClass(typeof(FillPatternElement)).ToArray();
+            foreach (Element item in Collector)
+            {
+                //FillPatternElement fpe = item as FillPatternElement;
+                if (item.Name == patternName)
+                {
+                    extracted = item;
+                    break;
+                }
+            }
+            return extracted;
+        }
     }
 }
