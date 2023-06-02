@@ -83,7 +83,7 @@ namespace Revit_VizForms
                             }
                             catch
                             {
-                                MessageBox.Show("Error");
+                                //MessageBox.Show("Error");
                             }
                         }
                     }
