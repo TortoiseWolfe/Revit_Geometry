@@ -72,7 +72,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes.cs" />
-    <Compile Include="Commands\01_Elements_Visibilty.cs" />
+    <Compile Include="Commands\02_Elements_Reset_OverRide.cs" />
+    <Compile Include="Commands\01_Elements_OverRide.cs" />
     <Compile Include="Commands\00_Main_Addin_Structure.cs" />
     <Compile Include="Analysis.cs" />
     <Compile Include="Commands\App.cs" />

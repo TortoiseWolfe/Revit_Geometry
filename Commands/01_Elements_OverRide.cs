@@ -15,7 +15,7 @@ namespace Revit_VizForms
 {
     [Transaction(TransactionMode.Manual)]
     [Regeneration(RegenerationOption.Manual)]
-    internal class _01_Elements_Visibilty:IExternalCommand
+    internal class _01_Elements_OverRide:IExternalCommand
     {
         public Result Execute(
             ExternalCommandData commandData,
