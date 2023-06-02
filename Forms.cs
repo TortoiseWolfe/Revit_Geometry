@@ -20,6 +20,14 @@ namespace Revit_VizForms
             label_One.Text = Title;
             label_One.Location = new Point(20, 10);
 
+            ComboBox comboBox_One = new ComboBox();
+            foreach (var item in Items)
+            {
+                comboBox_One.Items.Add(item);
+            }
+            comboBox_One.Location = new Point(20, 30);
+            comboBox_One.Size = new Size(200, 20);
+
             Button button_One = new Button();
             button_One.Text = "OK";
             button_One.DialogResult = DialogResult.OK;
@@ -29,11 +37,12 @@ namespace Revit_VizForms
             form_One.AcceptButton = button_One;
             form_One.StartPosition = FormStartPosition.CenterScreen;
             
-            form_One.Controls.Add(label_One);
             form_One.Controls.Add(button_One);
+            form_One.Controls.Add(label_One);
+            form_One.Controls.Add(comboBox_One);
             form_One.Size = new Size(200, 200);
-
             form_One.ShowDialog();
+            result = comboBox_One.SelectedItem.ToString();
 
             return result;
         }

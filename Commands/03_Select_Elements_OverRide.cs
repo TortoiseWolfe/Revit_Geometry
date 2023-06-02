@@ -29,25 +29,17 @@ namespace Revit_VizForms
             EX.doc = doc;
 
             List<string> s_values = new List<string>() { "Generic Models", "Structural Columns", "Structural Framing" };
-            string selection = Forms.single_ComboBox_Selector("Selector","Selection", s_values);
+            Dictionary<string, BuiltInCategory> s_dict = new Dictionary<string, BuiltInCategory>();
+            s_dict.Add("Generic Models", BuiltInCategory.OST_GenericModel);
+            s_dict.Add("Structural Columns", BuiltInCategory.OST_StructuralColumns);
+            s_dict.Add("Structural Framing", BuiltInCategory.OST_StructuralFraming);
 
+            string selected = Forms.single_ComboBox_Selector("Selector","Selection", s_values);
 
-            List<FamilyInstance> genericModels = Sel.GetAllFamilyInsancesOfCategory(doc, BuiltInCategory.OST_GenericModel);
-            List<FamilyInstance> structuralColumns = Sel.GetAllFamilyInsancesOfCategory(doc, BuiltInCategory.OST_StructuralColumns);
-            List<FamilyInstance> structuralFramings = Sel.GetAllFamilyInsancesOfCategory(doc, BuiltInCategory.OST_StructuralFraming);
+            List<FamilyInstance> elements_Selected = Sel.GetAllFamilyInsancesOfCategory(doc, s_dict[selected]);
 
             List<E_element> eObjects = new List<E_element>();
-            foreach (FamilyInstance fi in genericModels)
-            {
-                E_element val = EX.Get_e_Element_from_Element(fi as Element);
-                eObjects.Add(val);
-            }
-            foreach (FamilyInstance fi in structuralColumns)
-            {
-                E_element val = EX.Get_e_Element_from_Element(fi as Element);
-                eObjects.Add(val);
-            }
-            foreach (FamilyInstance fi in structuralFramings)
+            foreach (FamilyInstance fi in elements_Selected)
             {
                 E_element val = EX.Get_e_Element_from_Element(fi as Element);
                 eObjects.Add(val);
