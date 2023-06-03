@@ -34,7 +34,7 @@ namespace Revit_VizForms
             s_dict.Add("Structural Columns", BuiltInCategory.OST_StructuralColumns);
             s_dict.Add("Structural Framing", BuiltInCategory.OST_StructuralFraming);
 
-            string selected = Form_z.single_ComboBox_Selector("Selector","Selection", s_values);
+            string selected = Form_z.Single_ComboBox_Selector("Selector","Selection", s_values);
 
             List<FamilyInstance> elements_Selected = sel_Ection.GetAllFamilyInsancesOfCategory(doc, s_dict[selected]);
 

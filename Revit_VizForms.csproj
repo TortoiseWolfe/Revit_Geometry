@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes.cs" />
+    <Compile Include="Commands\05_Creation_byWinForm.cs" />
     <Compile Include="Commands\04_Form_Running.cs" />
     <Compile Include="Commands\03_Select_Elements_OverRide.cs" />
     <Compile Include="Commands\02_Elements_Reset_OverRide.cs" />

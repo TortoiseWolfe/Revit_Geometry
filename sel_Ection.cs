@@ -227,7 +227,6 @@ namespace Revit_VizForms
             }
             return symbol;
         }
-
         public static List<ElementType> GetAllElementTpyesOfCategory(Document doc, BuiltInCategory category)
         {
             List<ElementType> allElementTypes = new List<ElementType>();
@@ -238,6 +237,22 @@ namespace Revit_VizForms
             {
                 ElementId famItId = famIterator.Current;
                 FamilySymbol famSymbol = doc.GetElement(famItId) as FamilySymbol;
+                allElementTypes.Add(famSymbol);
+                /*
+                */
+            }
+            return allElementTypes;
+        }
+        public static List<ElementType> Get_All_ElementTypes_of_Category(Document doc, BuiltInCategory category)
+        {
+            List<ElementType> allElementTypes = new List<ElementType>();
+            FilteredElementCollector collector = new FilteredElementCollector(doc).OfCategory(category).WhereElementIsElementType();
+            FilteredElementIdIterator famIterator = collector.GetElementIdIterator();
+            famIterator.Reset();
+            while (famIterator.MoveNext())
+            {
+                ElementId famItId = famIterator.Current;
+                ElementType famSymbol = doc.GetElement(famItId) as ElementType;
                 allElementTypes.Add(famSymbol);
                 /*
                 */
