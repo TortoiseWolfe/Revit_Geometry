@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Revit_VizForms
 {
-    internal class Sel
+    internal class sel_Ection
     {
         public static Element SingleCurtainWallSelection(UIApplication uiapp)
         {

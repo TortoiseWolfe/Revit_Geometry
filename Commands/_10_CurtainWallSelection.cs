@@ -21,7 +21,7 @@ namespace Revit_VizForms
             // Selection or Extraction
             UIApplication uiapp = commandData.Application;
             Document doc = uiapp.ActiveUIDocument.Document;
-            Element SelectedElement = Sel.SingleCurtainWallSelection(uiapp);
+            Element SelectedElement = sel_Ection.SingleCurtainWallSelection(uiapp);
 
             // Add the selected element to a list
             List<Element> SelectedElements = new List<Element>();

@@ -96,7 +96,7 @@
     <Compile Include="Form_z.cs" />
     <Compile Include="Graphical.cs" />
     <Compile Include="Revit_Geomettry.cs" />
-    <Compile Include="Sel.cs" />
+    <Compile Include="sel_Ection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

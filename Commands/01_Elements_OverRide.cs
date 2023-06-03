@@ -27,9 +27,9 @@ namespace Revit_VizForms
             Document doc = uiapp.ActiveUIDocument.Document;
             Extraction EX = new Extraction();
             EX.doc = doc;
-            List<FamilyInstance> genericModels = Sel.GetAllFamilyInsancesOfCategory(doc, BuiltInCategory.OST_GenericModel);
-            List<FamilyInstance> structuralColumns = Sel.GetAllFamilyInsancesOfCategory(doc, BuiltInCategory.OST_StructuralColumns);
-            List<FamilyInstance> structuralFramings = Sel.GetAllFamilyInsancesOfCategory(doc, BuiltInCategory.OST_StructuralFraming);
+            List<FamilyInstance> genericModels = sel_Ection.GetAllFamilyInsancesOfCategory(doc, BuiltInCategory.OST_GenericModel);
+            List<FamilyInstance> structuralColumns = sel_Ection.GetAllFamilyInsancesOfCategory(doc, BuiltInCategory.OST_StructuralColumns);
+            List<FamilyInstance> structuralFramings = sel_Ection.GetAllFamilyInsancesOfCategory(doc, BuiltInCategory.OST_StructuralFraming);
 
             List<E_element> eObjects = new List<E_element>();
             foreach (FamilyInstance fi in genericModels)

@@ -36,7 +36,7 @@ namespace Revit_VizForms
 
             string selected = Form_z.single_ComboBox_Selector("Selector","Selection", s_values);
 
-            List<FamilyInstance> elements_Selected = Sel.GetAllFamilyInsancesOfCategory(doc, s_dict[selected]);
+            List<FamilyInstance> elements_Selected = sel_Ection.GetAllFamilyInsancesOfCategory(doc, s_dict[selected]);
 
             List<E_element> eObjects = new List<E_element>();
             foreach (FamilyInstance fi in elements_Selected)
