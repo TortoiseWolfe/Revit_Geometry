@@ -8,12 +8,12 @@ using System.Drawing;
 
 namespace Revit_VizForms
 {
-    internal class Forms
+    internal class Form_z
     {
         public static string single_ComboBox_Selector(string FormText,string Title, List<string> Items)
         {
             string result="value";
-            Form form_One = new Form();
+            System.Windows.Forms.Form form_One = new System.Windows.Forms.Form();
             form_One.Text = FormText;
             
             Label label_One = new Label();
@@ -49,7 +49,7 @@ namespace Revit_VizForms
         public static string Single_ComboBox_and_Text_Selector(string FormText, string Title, List<string> Items)
         {
             string result = "value";
-            Form form_One = new Form();
+            System.Windows.Forms.Form form_One = new System.Windows.Forms.Form();
             form_One.Text = FormText;
 
             Label label_One = new Label();
