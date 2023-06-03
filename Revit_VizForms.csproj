@@ -87,19 +87,28 @@
     <Compile Include="Commands\_10_CurtainWallSelection.cs" />
     <Compile Include="Commands\_11_CurtainWallDimensioning.cs" />
     <Compile Include="Extraction.cs" />
+    <Compile Include="Formses\Form_01.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formses\Form_01.Designer.cs">
+      <DependentUpon>Form_01.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formses\TestForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formses\TestForm.Designer.cs">
       <DependentUpon>TestForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_z.cs" />
+    <Compile Include="Formses\Form_z.cs" />
     <Compile Include="Graphical.cs" />
     <Compile Include="Revit_Geomettry.cs" />
     <Compile Include="sel_Ection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Formses\Form_01.resx">
+      <DependentUpon>Form_01.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formses\TestForm.resx">
       <DependentUpon>TestForm.cs</DependentUpon>
     </EmbeddedResource>
