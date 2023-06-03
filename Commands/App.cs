@@ -67,7 +67,7 @@ namespace Revit_VizForms
                                commandName,
                                cmdText,
                                AssemblyPath,
-                               "Revit_Geometry." + commandName);
+                               "Revit_VizForms." + commandName);
 
             PushButton pb1 = ribbonPanel.AddItem(A1) as PushButton;
             pb1.ToolTip = toolTipText;

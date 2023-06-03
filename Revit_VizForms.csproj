@@ -121,7 +121,7 @@
     <EmbeddedResource Include="Resources\toolTipImages\windows.png" />
     <EmbeddedResource Include="Resources\player_record.png" />
     <EmbeddedResource Include="Resources\toolTipImages\Trinam_96.png" />
-    <Content Include="Revit_Geometry.addin" />
+    <Content Include="Revit_VizForms.addin" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
